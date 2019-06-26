@@ -15,3 +15,5 @@ if __name__ == "__main__":
     ])
     app.listen(8000)
     tornado.ioloop.IOLoop.current().start()
+
+# E:\python36\Lib\site-packages\tornado-6.0a1-py3.6-win-amd64.egg要想重新安装tornado,把这个路径里面的包删掉
