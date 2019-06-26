@@ -14,6 +14,7 @@ class IndexHandler(tornado.web.RequestHandler):
         self.write("sunck is a good man")
 
 if __name__ == "__main__":
+    tornado.options.options.logging = None
     tornado.options.parse_config_file("config")
     print("list=", tornado.options.options.list)
     app = tornado.web.Application([
