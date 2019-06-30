@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import tornado.web
+import config
 from views import index
 
 class Application(tornado.web.Application):
@@ -8,4 +9,4 @@ class Application(tornado.web.Application):
         handlers = [
             (r'/',index.IndexHandler)
         ]
-        super(Application,self).__init__(handlers)
+        super(Application,self).__init__(handlers,**config.settings)
