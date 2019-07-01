@@ -5,7 +5,8 @@ from tornado.web import RequestHandler
 
 class IndexHandler(RequestHandler):
     def get(self, *args, **kwargs):
-        self.write("sunck is a good man")
+        url = self.reverse_url("kaigegood")
+        self.write("<a href='%s'>去另一个界面</a>"%(url))
 
 class SunckHandler(RequestHandler):
     #该方法会在HTTP方法之前调用
@@ -14,6 +15,12 @@ class SunckHandler(RequestHandler):
         self.word2 = word2
 
     def get(self, *args, **kwargs):
-        print(self.word1, self.word2)
         self.write("sunck is a nice man")
+
+class KaigeHandler(RequestHandler):
+    def initialize(self, word3, word4):
+        self.word3 = word3
+        self.word4 = word4
+    def get(self, *args, **kwargs):
+        self.write("kaige is a nice man")
 

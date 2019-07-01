@@ -9,7 +9,7 @@ class Application(tornado.web.Application):
         handlers = [
             (r'/',index.IndexHandler),
             (r'/sunck', index.SunckHandler, {"word1":"good", "word2":"nice"}),
-            ()
+            tornado.web.url(r'/kaige',index.KaigeHandler,{"word3":"handsome", "word4":"cool"},name="kaigegood")
 
         ]
         super(Application,self).__init__(handlers,**config.settings)
