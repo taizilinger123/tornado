@@ -24,3 +24,8 @@ class KaigeHandler(RequestHandler):
     def get(self, *args, **kwargs):
         self.write("kaige is a nice man")
 
+class LiuyifeiHandler(RequestHandler):
+    def get(self, p1, p2, p3, *args, **kwargs):
+        print(p1 + "-" + p2 + "-" + p3)
+        self.write("liuyifei is a nice women")
+
