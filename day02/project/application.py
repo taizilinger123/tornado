@@ -11,7 +11,9 @@ class Application(tornado.web.Application):
             (r'/sunck', index.SunckHandler, {"word1":"good", "word2":"nice"}),
             tornado.web.url(r'/kaige',index.KaigeHandler,{"word3":"handsome", "word4":"cool"},name="kaigegood"),
 
+            # (r'/liuyifei/(\w+)/(\w+)/(\w+)', index.LiuyifeiHandler),
             (r'/liuyifei/(?P<p1>\w+)/(?P<p3>\w+)/(?P<p2>\w+)', index.LiuyifeiHandler),
+            (r'/zhangmanyu', index.ZhangmanyuHandler),
 
         ]
         super(Application,self).__init__(handlers,**config.settings)

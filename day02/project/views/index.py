@@ -29,3 +29,14 @@ class LiuyifeiHandler(RequestHandler):
         print(p1 + "-" + p2 + "-" + p3)
         self.write("liuyifei is a nice women")
 
+class ZhangmanyuHandler(RequestHandler):
+    def get(self, *args, **kwargs):
+        a = self.get_query_argument("a")
+        b = self.get_query_argument("b")
+        c = self.get_query_argument("c", strip=False)
+        print(a, b, "*"+c+"*")
+        self.write("zhangmanyu is a good women")
+
+#http://localhost:8000/zhangmanyu?a=1&b=2&c=%20%20%20%20%203
+#%20表示空格
+
