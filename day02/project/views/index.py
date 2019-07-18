@@ -31,12 +31,24 @@ class LiuyifeiHandler(RequestHandler):
 
 class ZhangmanyuHandler(RequestHandler):
     def get(self, *args, **kwargs):
-        a = self.get_query_argument("a")
-        b = self.get_query_argument("b")
-        c = self.get_query_argument("c", strip=False)
-        print(a, b, "*"+c+"*")
+        alist = self.get_arguments("a")
+        print(alist[0],alist[1])
         self.write("zhangmanyu is a good women")
+
+#post
+class PostFileHandler(RequestHandler):
+    def get(self, *args, **kwargs):
+        self.render('postfile.html')
+    def post(self, *args, **kwargs):
+        name = self.get_argument("username")
+        passwd = self.get_body_argument("passwd")
+        hobbyList = self.get_body_arguments("hobby")
+        print(name, passwd, hobbyList)
+        self.write("sunck is a handsome man")
+
 
 #http://localhost:8000/zhangmanyu?a=1&b=2&c=%20%20%20%20%203
 #%20表示空格
+#http://localhost:8000/zhangmanyu?a=1&a=2
+#http://localhost:8000/postfile
 
