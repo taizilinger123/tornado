@@ -21,5 +21,11 @@ class Application(tornado.web.Application):
             #post
             (r'/postfile',index.PostFileHandler),
 
+            #request对象
+            (r'/zhuyin', index.ZhuyinHandler),
+
+            #上传文件
+            (r'/upfile', index.UpFileHandler),
+
         ]
         super(Application,self).__init__(handlers,**config.settings)

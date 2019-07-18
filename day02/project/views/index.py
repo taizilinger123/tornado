@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 import tornado.web
 from tornado.web import RequestHandler
+import os
+import config
 
 class IndexHandler(RequestHandler):
     def get(self, *args, **kwargs):
@@ -46,9 +48,37 @@ class PostFileHandler(RequestHandler):
         print(name, passwd, hobbyList)
         self.write("sunck is a handsome man")
 
+class  ZhuyinHandler(RequestHandler):
+    def get(self, *args, **kwargs):
+        print(self.request.method)
+        print(self.request.host)
+        print(self.request.uri)
+        print(self.request.path)
+        print(self.request.query)
+        print(self.request.version)
+        print(self.request.headers)
+        print(self.request.body)
+        print(self.request.remote_ip)
+        print(self.request.files)
+        self.write("zhuyin is a good women")
+
+class  UpFileHandler(RequestHandler):
+    def get(self, *args, **kwargs):
+        self.render('upfile.html')
+    def post(self, *args, **kwargs):
+        filesDict = self.request.files
+        for inputname in filesDict:
+            fileArr = filesDict[inputname]
+            for fileObj in fileArr:
+                #存储路径
+                filePath = os.path.join(config.BASE_DIRS,'upfile/'+fileObj.filename)
+                with open(filePath, "wb") as f:
+                    f.write(fileObj.body)
+        self.write("ok")
 
 #http://localhost:8000/zhangmanyu?a=1&b=2&c=%20%20%20%20%203
 #%20表示空格
 #http://localhost:8000/zhangmanyu?a=1&a=2
 #http://localhost:8000/postfile
+#http://localhost:8001/zhuyin?a=1&b=2
 
