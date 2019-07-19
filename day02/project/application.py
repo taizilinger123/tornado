@@ -27,5 +27,8 @@ class Application(tornado.web.Application):
             #上传文件
             (r'/upfile', index.UpFileHandler),
 
+            #write
+            (r'/write', index.WriteHandler),
+
         ]
         super(Application,self).__init__(handlers,**config.settings)

@@ -76,9 +76,19 @@ class  UpFileHandler(RequestHandler):
                     f.write(fileObj.body)
         self.write("ok")
 
+class WriteHandler(RequestHandler):
+    def get(self, *args, **kwargs):
+        self.write("sunck is a good man")
+        self.write("sunck is a nice man")
+        self.write("sunck is a handsome man")
+        #刷新缓冲区,关闭当次请求通道
+        #在finish下边就不要再write
+        self.finish()
+        self.write("sunck is a cool man")
 #http://localhost:8000/zhangmanyu?a=1&b=2&c=%20%20%20%20%203
 #%20表示空格
 #http://localhost:8000/zhangmanyu?a=1&a=2
 #http://localhost:8000/postfile
 #http://localhost:8001/zhuyin?a=1&b=2
+#http://localhost:8001/write
 
